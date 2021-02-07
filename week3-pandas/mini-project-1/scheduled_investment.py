@@ -28,7 +28,7 @@ def annual_return(num_of_year: int, times: float) -> float:
 
 # -- TODO: Part 1 (START)
 def calculate_scheduled_investment(data: pd.DataFrame) -> {}:
-    shares = 2  # 每次购买 2 share QQQ
+    shares = 10  # 每次购买 10 share QQQ
     positions = [0.0]
     cost = [0.0]
     assets = [0.0]
