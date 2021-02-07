@@ -1,6 +1,6 @@
 """ DO NOT EDIT (BEGIN) """
 import pandas as pd
-import datetime
+import datetime as dt
 
 RAW_DATA_NAME = "data/QQQ.csv"
 ANALYSIS_RESULT_DATA_NAME = "data/QQQ-result.csv"
@@ -15,7 +15,7 @@ def write_data(data: pd.DataFrame) -> None:
 
 
 def is_monday(day: str) -> bool:
-    return datetime.datetime.strptime(day, '%Y-%m-%d').strftime('%A') == 'Monday'
+    return dt.datetime.strptime(day, '%Y-%m-%d').strftime('%A') == 'Monday'
 
 
 # 从年数，回报倍数得到年化收益. e.g. 0.1 -> 10% 年化收益
@@ -51,8 +51,8 @@ def export_result() -> float:
     # 在这里调用 calculate_scheduled_investment, 并且赋值
     # 到asset 和cost.
     # 最后返回十年的年化率
-    asset = [1]
-    cost = [1]
+    asset = [1]  # replace
+    cost = [1]  # replace
     return annual_return(10, asset[-1] / cost[-1])  # 10 years
 
 
