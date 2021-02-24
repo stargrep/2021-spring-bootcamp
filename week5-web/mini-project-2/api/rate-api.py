@@ -20,6 +20,7 @@ def upsert_client_rate(client_id, rate):
     # call http post - http post call to 127.0.0.1:5000/rate
     import requests
     response = requests.post()  # what to post?
+    # https://requests.readthedocs.io/en/master/user/quickstart/
 # -- TODO END: Part 5
 
 
@@ -30,7 +31,7 @@ def upsert_client_rate(client_id, rate):
 def test_get_rate():
     print(get_rate('client1'))
     assert get_rate('client1') == 0.2
-    # assert get_rate('client0') == 0.0
+    assert get_rate('client0') == 0.0
 # -- TODO END: Part 3
 
 
