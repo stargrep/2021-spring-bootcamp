@@ -19,7 +19,7 @@ def get_rate(client_id):
 def upsert_client_rate(client_id, rate):
     # call http post - http post call to 127.0.0.1:5000/rate
     import requests
-    response = requests.post()  # what to post?
+    response = requests.post("http://127.0.0.1:5000/rate", json={"client_id": 1})  # what to post?
     # https://requests.readthedocs.io/en/master/user/quickstart/
 # -- TODO END: Part 5
 
@@ -36,10 +36,12 @@ def test_get_rate():
 
 
 # -- TODO: Part 6, Test Your API for upsert client-rate
-
+def test_upsert_rate():
+    upsert_client_rate("client_id", "rate")
 # -- TODO END: Part 6
 
 # DO NOT DELETE
 if __name__ == '__main__':
-    test_get_rate()
+    # test_get_rate()
+    test_upsert_rate()
     # you can add your test functions here
