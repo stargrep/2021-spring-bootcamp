@@ -43,7 +43,11 @@ def get_client_rate(client_id):
     :return: http response
     """
     # How to get the actual rate from client_id?
-    return client_id
+    client_dict_web = get_client_rates()
+    if client_id in client_dict_web:
+        return str(get_client_rates()[client_id]['rate'])
+    else:
+        return str(0.0)
 # -- TODO END: Part 1
 
 
@@ -57,10 +61,13 @@ def upsert_client_rate():
     """
     # We want to update if the client exist in the client_rate.json data
     # Or insert a new client-rate pair into client_rate.json data
-    print(request)
 
+    for each_key in list(request.get_json().keys()):
+        update_client_rates(each_key, request.get_json()[each_key])
+
+    # return str(request.get_json())
+    return 'Successfully updated!'
     # After getting post request - how to update json file?
-    return request.get_json()
 
 
 def update_client_rates(client_id, rate):
@@ -74,9 +81,16 @@ def update_client_rates(client_id, rate):
     # check if exist
     # replace or add client rate
     # re-write the file
-    pass
+
+    import pandas as pd
+    client_dict_web = get_client_rates()
+    client_dict_web[client_id] = {"rate": rate}
+    with open('client_rate.json', 'w') as update_file:
+        json.dump(client_dict_web, update_file)
+
 # -- TODO END: Part 4
 
 
 if __name__ == "__main__":
     app.run()
+
