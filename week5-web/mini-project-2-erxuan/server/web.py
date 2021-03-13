@@ -27,7 +27,7 @@ def get_client_rates():
     :return: dict {id: {'rate':float}}
     """
     import pandas as pd
-    df = pd.read_json("client_rate.json")
+    df = pd.read_json("client_rate1.json")
     return df.to_dict()
 # -- DO NOT EDIT END
 
@@ -85,7 +85,7 @@ def update_client_rates(client_id, rate):
     import pandas as pd
     client_dict_web = get_client_rates()
     client_dict_web[client_id] = {"rate": rate}
-    with open('client_rate.json', 'w') as update_file:
+    with open('client_rate1.json', 'w') as update_file:
         json.dump(client_dict_web, update_file)
 
 # -- TODO END: Part 4
